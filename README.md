@@ -15,7 +15,7 @@ Comparison of three inference modes:
 - NPU with hybrid INT8 quantization  
 
 
-<video src="demo.mp4" controls width="100%"></video>
+https://github.com/user-attachments/assets/e7b95461-892a-47ef-8149-e8c664914115
 
 ## Performance
 
