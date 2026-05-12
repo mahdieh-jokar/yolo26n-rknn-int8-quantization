@@ -27,6 +27,8 @@ https://github.com/user-attachments/assets/e7b95461-892a-47ef-8149-e8c664914115
 
 Hybrid quantization improves throughput by **~4× compared to CPU inference**.
 
+It reduced the final deployment model **size** by nearly **half**, which is especially useful for edge devices with **limited storage** and memory bandwidth.
+
 
 ## Conversion Pipeline
 Below is a diagram of the model conversion pipeline:
@@ -158,13 +160,10 @@ python3 onnx_to_rknn_hybrid.py \
 
 ## Limitations
 
-- This repository focuses specifically on quantizing **YOLO26n**.  
+- This repository focuses specifically on quantizing **YOLO26 detection models**.  
   If you work with another YOLO26 variant, you must verify which **output‑related layers** produce zero or unstable results after full INT8 quantization. These layers should remain in **FP16**.
 - The root cause is that **RKNN does not support the Top‑K operator**, which affects post‑processing logic and can lead to empty detections if quantized incorrectly.
 
-## Note
-
-A potential alternative fix has been discussed [here](https://github.com/ultralytics/ultralytics/issues/23340#issuecomment-3789012212).  I have not tested this method yet.
 
 ## 🙌 Acknowledgments
 
