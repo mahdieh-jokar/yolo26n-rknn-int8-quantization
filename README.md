@@ -163,6 +163,8 @@ python3 onnx_to_rknn_hybrid.py \
   If you work with another YOLO26 variant, you must verify which **output‑related layers** produce zero or unstable results after full INT8 quantization. These layers should remain in **FP16**.
 - The root cause is that **RKNN does not support the Top‑K operator**, which affects post‑processing logic and can lead to empty detections if quantized incorrectly.
 
+## Medium Article
+I explored more details about the deployment process, performance, and comparisons in this [Medium article](https://medium.com/@mjokar7676/how-i-made-yolo26-run-4-faster-3164e1162b6e).
 
 ## 🙌 Acknowledgments
 
