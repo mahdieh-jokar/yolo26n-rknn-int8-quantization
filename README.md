@@ -27,8 +27,7 @@ https://github.com/user-attachments/assets/e7b95461-892a-47ef-8149-e8c664914115
 
 Hybrid quantization improves throughput by **~4× compared to CPU inference**.
 
-It reduced the final deployment model **size** by nearly **half**, which is especially useful for edge devices with **limited storage** and memory bandwidth.
-
+It reduced the final deployment model **size** by nearly 1/4 of the .pth version, which is especially useful for edge devices with **limited storage** and memory bandwidth.
 
 ## Conversion Pipeline
 Below is a diagram of the model conversion pipeline:
