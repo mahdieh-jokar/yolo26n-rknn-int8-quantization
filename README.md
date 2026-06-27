@@ -1,9 +1,9 @@
 
 # YOLO26 on RK3588; Hybrid INT8 Quantization (RKNN)
 
-Deploy **YOLO26n** on **Rockchip RK3588 NPU** using **hybrid INT8 quantization** with RKNN Toolkit.
+Deploy **YOLO26** on **Rockchip RK3588 NPU** using **hybrid INT8 quantization** with RKNN Toolkit.
 
-This repository provides a workflow for converting a YOLO26 model to **RKNN format** and optimizing it for edge inference.
+**Update**: I have successfully tested this hybrid quantization workflow across all YOLO detector and segmentor variants, and it works flawlessly for all of them.
 
 ## Demo
 
@@ -159,8 +159,10 @@ python3 onnx_to_rknn_hybrid.py \
 
 ## Limitations
 
-- This repository focuses specifically on quantizing **YOLO26 detection models**.  
-  If you work with another YOLO26 variant, you must verify which **output‑related layers** produce zero or unstable results after full INT8 quantization. These layers should remain in **FP16**.
+- I have tested this workflow across all YOLO detector and segmentor variants and confirmed it works correctly.
+
+- If you are applying this method to completely different non-YOLO architectures, you must verify which output-related layers produce zero or unstable results after full INT8 quantization. Those specific layers should remain in FP16.
+  
 - The root cause is that **RKNN does not support the Top‑K operator**, which affects post‑processing logic and can lead to empty detections if quantized incorrectly.
 
 ## Medium Article
