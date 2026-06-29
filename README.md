@@ -3,29 +3,31 @@
 
 Deploy **YOLO26** on **Rockchip RK3588 NPU** using **hybrid INT8 quantization** with RKNN Toolkit.
 
-**Update**: I have successfully tested this hybrid quantization workflow across all YOLO detector and segmentor variants, and it works flawlessly for all of them.
+**Update (2026‑06‑28)**: I successfully tested this hybrid quantization workflow across all YOLO detector and segmentor variants it works reliably for all of them.
 
 ## Demo
 
-Below is a side‑by‑side comparison on a memorable clip: **Messi’s goal in the World Cup Final (France vs Argentina)**.
+Below is a side‑by‑side comparison of the YOLO26 detection model (Nano version) on a memorable clip: **Messi’s goal in the World Cup Final (France vs Argentina)**.
 
 Comparison of three inference modes:
 - CPU inference  
 - NPU without quantization  
 - NPU with hybrid INT8 quantization  
 
-
 https://github.com/user-attachments/assets/e7b95461-892a-47ef-8149-e8c664914115
+
+Here is a demo of the YOLO26 segmentation model (Nano version) on the same devices:
+
 
 ## Performance
 
-| Platform | FPS |
-|----------|------|
-| CPU (i5‑10th Gen) | ~10 |
-| RK3588 NPU (no quantization) | ~21 |
-| RK3588 NPU (hybrid INT8) | ~38 |
+| Platform | Detection FPS | Segmentation FPS |
+|----------|--------------:|-----------------:|
+| CPU (i5-10th Gen) | ~10 | ~7.5 |
+| RK3588 NPU (no quantization) | ~21 | ~11 |
+| RK3588 NPU (hybrid INT8) | ~38 | ~21 |
 
-Hybrid quantization improves throughput by **~4× compared to CPU inference**.
+Hybrid quantization improves throughput for detection model by **~4× compared to CPU inference** and **~3×** for segmentation model.
 
 It reduced the final deployment model **size** by nearly 1/4 of the .pth version, which is especially useful for edge devices with **limited storage** and memory bandwidth.
 
@@ -69,7 +71,7 @@ yolo export model=yolo26n.pt format=rknn name=rk3588 opset=13
 
 ## 3. Hybrid Quantization Overview
 
-Hybrid quantization allows you to Keep sensitive layers (e.g. detection outputs) in **floating-point (FP16 or FP32)**
+Hybrid quantization allows you to keep sensitive layers (e.g. detection outputs) in **floating-point (FP16 or FP32)**
 
 
 ## 4. Calibration Dataset Requirements
@@ -78,12 +80,12 @@ Quantization requires a **calibration dataset**.
 
 ### Best Practices
 
-- Use **100–200 images**
+- Use **200–400 images**
 - Ensure the dataset is **diverse**
 - Data should closely **match real inference conditions**
 
 Example:
-- If the model was fine-tuned on **footbal games**, the calibration dataset should also contain representative same samples
+- If the model was fine-tuned on **football games**, the calibration dataset should also contain representative same samples
 
 You must provide a `.txt` file containing **absolute paths** to the calibration images.
 
