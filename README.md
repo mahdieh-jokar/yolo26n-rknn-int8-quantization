@@ -18,6 +18,7 @@ https://github.com/user-attachments/assets/e7b95461-892a-47ef-8149-e8c664914115
 
 Here is a demo of the YOLO26 segmentation model (Nano version) on the same devices:
 
+https://github.com/user-attachments/assets/53136f6c-dd6e-42cf-b73b-60325d4b6b9d
 
 ## Performance
 
@@ -36,7 +37,11 @@ Below is a diagram of the model conversion pipeline:
 
 ![pipeline](diagram.png)
 
-## 1. Environment Setup
+#
+
+
+
+# 1. Environment Setup
 
 First, install **Ultralytics**:
 
